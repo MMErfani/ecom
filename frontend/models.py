@@ -8,7 +8,23 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.username
-        
+ 
+class Category(models.Model):
+    title = models.CharField(max_length=250, verbose_name="عنوان")
+    slug = models.SlugField(max_length=250, unique = True , verbose_name="آدرس")
+    status = models.BooleanField(default=True, verbose_name="وضعیت نمایش")
+    position = models.IntegerField(verbose_name="پوزیشن")
+
+    class Meta():
+        verbose_name = "دسته بندی"
+        verbose_name_plural = "دسته بندی ها"
+        ordering = ['position']
+
+
+    
+    def __str__(self):
+        return self.title
+               
 class Product(models.Model):
     productname = models.CharField(max_length=200,verbose_name="نام محصول")
     price = models.DecimalField(max_digits=20, decimal_places=2,verbose_name="قیمت")
