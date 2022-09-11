@@ -194,6 +194,9 @@ figure {
 img {
   vertical-align: middle;
   border-style: none;
+  border-radius: 25px;
+  1px 2px 10px rgba(0, 0, 0, 0.2);
+  
 }
 
 svg {
@@ -7686,7 +7689,7 @@ button.bg-dark:focus {
 
 .mr-4,
 .mx-4 {
-  margin-right: 1.5rem !important;
+  margin-left: 1.5rem !important;
 }
 
 .mb-4,
@@ -9766,6 +9769,8 @@ h6,
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  border-radius: 25px !important;
+  box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .back-to-top {
