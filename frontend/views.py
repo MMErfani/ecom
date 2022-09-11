@@ -26,4 +26,4 @@ def contact(request):
 def productPage(request, slug):
     product = get_object_or_404(Product, slug=slug)
 
-    return render(request, 'frontend/product.html', context = {'pruduct' : product})
+    return render(request, 'frontend/product.html', context = {'productdetail' : product})

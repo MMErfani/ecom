@@ -1,7 +1,18 @@
 from django.contrib import admin
 from .models import *
+from django.contrib.auth.admin import UserAdmin
 
 # Register your models here.
+
+UserAdmin.fieldsets[2][1]['fields'] = (
+                                        "is_active",
+                                        "is_staff",
+                                        "avatar",
+                                        "is_superuser",
+                                        'groups',
+                                        'user_permissions'
+                                    )
+admin.site.register(User, UserAdmin)
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):

@@ -6,7 +6,7 @@ from django.utils import timezone
 
 class User(AbstractUser):
     phone = models.CharField(max_length=12, default='09123456789', verbose_name="شماره تلفن")
-
+    avatar = models.ImageField(upload_to="avatars",verbose_name="آواتار", default='avatar.png')
     class Meta:
         verbose_name = "کاربر"
         verbose_name_plural = "کاربران"

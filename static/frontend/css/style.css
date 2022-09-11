@@ -1,3 +1,4 @@
+
 /******* Bootstrap Theming ********/
 /*!
  * Bootstrap v4.5.3 (https://getbootstrap.com/)
@@ -6563,7 +6564,7 @@ button.bg-dark:focus {
 }
 
 .rounded-0 {
-  border-radius: 0 !important;
+  border-radius: 30 !important;
 }
 
 .clearfix::after {
@@ -7641,7 +7642,7 @@ button.bg-dark:focus {
 
 .mr-2,
 .mx-2 {
-  margin-right: 0.5rem !important;
+  margin-left: 0.5rem !important;
 }
 
 .mb-2,
@@ -7805,6 +7806,7 @@ button.bg-dark:focus {
 .pt-3,
 .py-3 {
   padding-top: 1rem !important;
+  border-radius: 30px;
 }
 
 .pr-3,
@@ -9807,7 +9809,7 @@ h6,
 }
 
 .jumbotron.page-header {
-  background: linear-gradient(rgba(40, 120, 235, 0.9), rgba(40, 120, 235, 0.9)), url(../img/page-header.jpg), no-repeat center center;
+  background: linear-gradient(rgba(40, 120, 235, 0.6), rgba(40, 120, 235, 0.8)), url(../img/page-header.jpg), no-repeat center center;
   background-size: cover;
 }
 
