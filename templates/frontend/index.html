@@ -32,22 +32,19 @@
     <div class="myfont rtl container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
             <a href="index.html" class="navbar-brand ml-lg-3">
-                <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-book-reader mr-3"></i>کدمونی</h1>
+                <h1 class="m-0 text-uppercase text-primary myfont"><i class="fa fa-book-reader mr-3"></i>کدمونی</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
                 <div class="navbar-nav mx-auto py-0">
-                    <a href="/" class="nav-item nav-link active">صفحه اصلی</a>
-                    <a href="/about" class="nav-item nav-link">درباره ما</a>
-                    <a href="/products" class="nav-item nav-link">محصولات</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">صفحات</a>
-                    </div>
-                    <a href="/contact" class="nav-item nav-link">تماس با ما</a>
+                    <a href="/" class="myfont nav-item nav-link active">صفحه اصلی</a>
+                    <a href="/about" class="myfont nav-item nav-link">درباره ما</a>
+                    <a href="/products" class="myfont nav-item nav-link">محصولات</a>
+                    <a href="/contact" class="myfont nav-item nav-link">تماس با ما</a>
                 </div>
-                <a href="" class="btn btn-primary py-2 px-4 d-none d-lg-block">بپیوندید</a>
+                <a href="" class="bmyfont tn btn-primary py-2 px-4 d-none d-lg-block">بپیوندید</a>
             </div>
         </nav>
     </div>
@@ -163,96 +160,23 @@
             </div>
         </div>
         <div class="owl-carousel courses-carousel">
+        	{% for product in products %}
             <div class="courses-item position-relative">
-                <img class="img-fluid" src="{% static 'frontend/img/courses-1.jpg' %}" alt="">
+                <img class="img-fluid" src="/media/{{ product.image }}" alt="">
                 <div class="courses-text">
-                    <h4 class="text-center text-white px-3">Web design & development courses for beginners</h4>
+                    <h4 class="text-center text-white px-3">{{ product.productname }}</h4>
                     <div class="border-top w-100 mt-3">
                         <div class="d-flex justify-content-between p-4">
-                            <span class="text-white"><i class="fa fa-user mr-2"></i>Jhon Doe</span>
-                            <span class="text-white"><i class="fa fa-star mr-2"></i>4.5 <small>(250)</small></span>
+                            <span class="text-white"><i class="fa fa-user mr-2"></i>{{ product.description }}</span>
+                            <span class="text-white"><i class="fa fa-star mr-2"></i>{{ product.price }}<small>تومن</small></span>
                         </div>
                     </div>
                     <div class="w-100 bg-white text-center p-4" >
-                        <a class="btn btn-primary" href="detail.html">Course Detail</a>
+                        <a class="btn btn-primary" href="detail.html">اطلاعات بیشتر</a>
                     </div>
                 </div>
             </div>
-            <div class="courses-item position-relative">
-                <img class="img-fluid" src="{% static 'frontend/img/courses-2.jpg' %}" alt="">
-                <div class="courses-text">
-                    <h4 class="text-center text-white px-3">Web design & development courses for beginners</h4>
-                    <div class="border-top w-100 mt-3">
-                        <div class="d-flex justify-content-between p-4">
-                            <span class="text-white"><i class="fa fa-user mr-2"></i>Jhon Doe</span>
-                            <span class="text-white"><i class="fa fa-star mr-2"></i>4.5 <small>(250)</small></span>
-                        </div>
-                    </div>
-                    <div class="w-100 bg-white text-center p-4" >
-                        <a class="btn btn-primary" href="detail.html">Course Detail</a>
-                    </div>
-                </div>
-            </div>
-            <div class="courses-item position-relative">
-                <img class="img-fluid" src="{% static 'frontend/img/courses-3.jpg' %}" alt="">
-                <div class="courses-text">
-                    <h4 class="text-center text-white px-3">Web design & development courses for beginners</h4>
-                    <div class="border-top w-100 mt-3">
-                        <div class="d-flex justify-content-between p-4">
-                            <span class="text-white"><i class="fa fa-user mr-2"></i>Jhon Doe</span>
-                            <span class="text-white"><i class="fa fa-star mr-2"></i>4.5 <small>(250)</small></span>
-                        </div>
-                    </div>
-                    <div class="w-100 bg-white text-center p-4" >
-                        <a class="btn btn-primary" href="detail.html">Course Detail</a>
-                    </div>
-                </div>
-            </div>
-            <div class="courses-item position-relative">
-                <img class="img-fluid" src="{% static 'frontend/img/courses-4.jpg' %}" alt="">
-                <div class="courses-text">
-                    <h4 class="text-center text-white px-3">Web design & development courses for beginners</h4>
-                    <div class="border-top w-100 mt-3">
-                        <div class="d-flex justify-content-between p-4">
-                            <span class="text-white"><i class="fa fa-user mr-2"></i>Jhon Doe</span>
-                            <span class="text-white"><i class="fa fa-star mr-2"></i>4.5 <small>(250)</small></span>
-                        </div>
-                    </div>
-                    <div class="w-100 bg-white text-center p-4" >
-                        <a class="btn btn-primary" href="detail.html">Course Detail</a>
-                    </div>
-                </div>
-            </div>
-            <div class="courses-item position-relative">
-                <img class="img-fluid" src="{% static 'frontend/img/courses-5.jpg' %}" alt="">
-                <div class="courses-text">
-                    <h4 class="text-center text-white px-3">Web design & development courses for beginners</h4>
-                    <div class="border-top w-100 mt-3">
-                        <div class="d-flex justify-content-between p-4">
-                            <span class="text-white"><i class="fa fa-user mr-2"></i>Jhon Doe</span>
-                            <span class="text-white"><i class="fa fa-star mr-2"></i>4.5 <small>(250)</small></span>
-                        </div>
-                    </div>
-                    <div class="w-100 bg-white text-center p-4" >
-                        <a class="btn btn-primary" href="detail.html">Course Detail</a>
-                    </div>
-                </div>
-            </div>
-            <div class="courses-item position-relative">
-                <img class="img-fluid" src="{% static 'frontend/img/courses-6.jpg' %}" alt="">
-                <div class="courses-text">
-                    <h4 class="text-center text-white px-3">Web design & development courses for beginners</h4>
-                    <div class="border-top w-100 mt-3">
-                        <div class="d-flex justify-content-between p-4">
-                            <span class="text-white"><i class="fa fa-user mr-2"></i>Jhon Doe</span>
-                            <span class="text-white"><i class="fa fa-star mr-2"></i>4.5 <small>(250)</small></span>
-                        </div>
-                    </div>
-                    <div class="w-100 bg-white text-center p-4" >
-                        <a class="btn btn-primary" href="detail.html">Course Detail</a>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}   
         </div>
         <div class="row justify-content-center bg-image mx-0 mb-5">
             <div class="col-lg-6 py-5">
