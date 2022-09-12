@@ -12,7 +12,7 @@ def product(request):
     return render(request, 'frontend/product.html', {'products':products})
 
 def index(request):
-    products = Product.objects.all()
+    products = Product.objects.filter(status='published')
     return render(request, 'frontend/index.html', {'products':products})
 
 def about(request):
