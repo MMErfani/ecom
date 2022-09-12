@@ -18,12 +18,9 @@ def index(request):
 def cart(request):
     cart = Cart.objects.get(user=request.user)
     ids = [pro.pid for pro in cart.pids.all()]
-    
-    print(str(ids))
-    
-    #products = Product.objects.filter(pid=id)
+    total=sum([pro.price for pro in cart.pids.all()])
     products = [Product.objects.get(pid=id) for id in ids]
-    return render(request, 'frontend/cart.html', {'products':products})
+    return render(request, 'frontend/cart.html', {'products':products, 'total':total})
     
 def about(request):
     products = Product.objects.all()
