@@ -4,7 +4,7 @@
 {% block main %}
 
 <!DOCTYPE html>
-
+	
     <!-- Feature Start -->
     <div class="container-fluid bg-image" style="margin: 0px 0;">
         <div class="container">
@@ -14,32 +14,32 @@
                         <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2 myfont rtl">کدها و محصولات گرافیکی اینجا خریدار داره</h6>
                         <h1 class="display-4 myfont">مارکت خرید و فروش برای برنامه نویسان و طراحان</h1>
                     </div>
-                    <p class="rtl myfont mb-4 pb-2">Aliquyam accusam clita nonumy ipsum sit sea clita ipsum clita, ipsum dolores amet voluptua duo dolores et sit ipsum rebum, sadipscing et erat eirmod diam kasd labore clita est. Diam sanctus gubergren sit rebum clita amet.</p>
+                    <p class="rtl myfont mb-4 pb-2">ما یه رابطیم بین برنامه نویسان و طراحان باتجربه و کسانی که میخوان خیلی سریع به چیزی که میخوان دست پیدا کنند. البته یه رابطی که حواسش به همه چی هست!</p>
                     <div class="rtl myfont d-flex mb-3">
                         <div class="btn-icon bg-primary mr-4">
                             <i class="fa fa-2x fa-graduation-cap text-white"></i>
                         </div>
-                        <div class=" mt-n1">
-                            <h4>Skilled Instructors</h4>
-                            <p>Labore rebum duo est Sit dolore eos sit tempor eos stet, vero vero clita magna kasd no nonumy et eos dolor magna ipsum.</p>
+                        <div class="myfont mt-n1">
+                            <h4 class="myfont">متخصصی؟</h4>
+                            <p>فرقی نداره برنامه نویسی یا طراح گرافیک و.. اینجا میتونی فایل پروژه هاتو بفروشی. مثلا یه نرم افزار ویندوزی فلان یا یه  فایل لایه باز برای فتوشاپ</p>
                         </div>
                     </div>
                     <div class="rtl myfont d-flex mb-3">
                         <div class="btn-icon bg-secondary mr-4">
                             <i class="fa fa-2x fa-certificate text-white"></i>
                         </div>
-                        <div class="mt-n1">
-                            <h4>International Certificate</h4>
-                            <p>Labore rebum duo est Sit dolore eos sit tempor eos stet, vero vero clita magna kasd no nonumy et eos dolor magna ipsum.</p>
+                        <div class="myfont mt-n1">
+                            <h4 class="myfont">دنبال پروژه آماده ای؟</h4>
+                            <p>بهترینجا همینجاست برای خرید چیزی که مد نظر داری از قالب وردپرس تا یه اپ موبایلی آماده! میدونی که چقدر تو زمانت صرفه جویی هم میشه!</p>
                         </div>
                     </div>
                     <div class="rtl myfont d-flex">
                         <div class="btn-icon bg-warning mr-4">
                             <i class="fa fa-2x fa-book-reader text-white"></i>
                         </div>
-                        <div class="mt-n1">
-                            <h4>Online Classes</h4>
-                            <p class="m-0">Labore rebum duo est Sit dolore eos sit tempor eos stet, vero vero clita magna kasd no nonumy et eos dolor magna ipsum.</p>
+                        <div class="myfont mt-n1">
+                            <h4 class="myfont">تضمین بی قید و شرط</h4>
+                            <p class="m-0">تا هفت روز بدون هیچ دلیلی میتونی پولتو پس بگیری! البته بعد از این موعد هم تنها نیستی هم ما و هم فروشنده ی محصول کنارتیم</p>
                         </div>
                     </div>
                 </div>
@@ -53,6 +53,100 @@
     </div>
     <!-- Feature Start -->
 
+
+    <!-- Courses Start -->
+    <div class="container-fluid px-0 py-5">
+        <div class="row mx-0 justify-content-center pt-5">
+            <div class="col-lg-6">
+                <div class="section-title text-center position-relative mb-4">
+                    <h6 class="myfont d-inline-block position-relative text-secondary text-uppercase pb-2">کدها قالب ها اپ ها فایل های لایه باز</h6>
+                    <h1 class="myfont display-4">محصولات جدید کدمونی</h1>
+                </div>
+            </div>
+        </div>
+        
+    
+		        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'frontend/css2/styles.css' %}" rel="stylesheet" />
+        <!-- Section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    {% for product in products %}
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="/media/{{ product.image }}" style=' border-radius: 25px !important;' alt="{{ product.productname }}" />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="myfont text-center">
+                                    <!-- Product name-->
+                                    <h5 class="myfont fw-bolder">{{ product.productname }}</h5>
+                                    <!-- Product reviews-->
+                                    <div class="myfont d-flex justify-content-center small mb-2">
+                                        <i class="fa fa-user mr-2"></i><small>{{ product.seller.get_full_name }}</small>
+                                    </div>
+                                    <!-- Product price-->
+                                    {{ product.price }}
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="myfont btn btn-outline-dark mt-auto" href="/product/{{ product.slug }}" style='border-radius: 14px !important;'>نمایش محصول</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        
+        <div class="row justify-content-center bg-image mx-0 mb-5">
+            <div class="col-lg-6 py-5">
+                <div class="bg-white p-5 my-5">
+                    <h1 class="text-center mb-4">30% Off For New Students</h1>
+                    <form>
+                        <div class="form-row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control bg-light border-0" placeholder="Your Name" style="padding: 30px 20px;">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="email" class="form-control bg-light border-0" placeholder="Your Email" style="padding: 30px 20px;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <select class="custom-select bg-light border-0 px-3" style="height: 60px;">
+                                        <option selected>Select A courses</option>
+                                        <option value="1">courses 1</option>
+                                        <option value="2">courses 1</option>
+                                        <option value="3">courses 1</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <button class="btn btn-primary btn-block" type="submit" style="height: 60px;">Sign Up Now</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Courses End -->
+    
+
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'frontend/js2/scripts.js' %}"></script>
 
 	
     <!-- About Start -->
@@ -103,88 +197,19 @@
     <!-- About End -->
 
 
-    <!-- Courses Start -->
-    <div class="container-fluid px-0 py-5">
-        <div class="row mx-0 justify-content-center pt-5">
-            <div class="col-lg-6">
-                <div class="section-title text-center position-relative mb-4">
-                    <h6 class="myfont d-inline-block position-relative text-secondary text-uppercase pb-2">کدها قالب ها اپ ها فایل های لایه باز و..</h6>
-                    <h1 class="myfont display-4">محصولات جدبد کدمونی</h1>
-                </div>
-            </div>
-        </div>
-        <div class="owl-carousel courses-carousel">
-        	{% for product in products %}
-            <div class="courses-item position-relative">
-                <img class="img-fluid" src="/media/{{ product.image }}" alt="">
-                <div class="courses-text">
-                    <h4 class="myfont text-center text-white px-3">{{ product.productname }}</h4>
-                    <div class="border-top w-100 mt-3">
-                        <div class="d-flex justify-content-between p-4">
-                            <span class="text-white"><i class="fa fa-user mr-2"></i>{{ product.seller.get_full_name }}</span>
-                            <span class="myfont rtl text-white"><i class="fa fa-star mr-2"></i><small>{{ product.price }} تومن</small></span>
-                        </div>
-                    </div>
-                    <div class="w-100 bg-white text-center p-4" >
-                        <a class="myfont btn btn-primary" href="/product/{{ product.slug }}">اطلاعات بیشتر</a>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}   
-        </div>
-        <div class="row justify-content-center bg-image mx-0 mb-5">
-            <div class="col-lg-6 py-5">
-                <div class="bg-white p-5 my-5">
-                    <h1 class="text-center mb-4">30% Off For New Students</h1>
-                    <form>
-                        <div class="form-row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Your Name" style="padding: 30px 20px;">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <input type="email" class="form-control bg-light border-0" placeholder="Your Email" style="padding: 30px 20px;">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <select class="custom-select bg-light border-0 px-3" style="height: 60px;">
-                                        <option selected>Select A courses</option>
-                                        <option value="1">courses 1</option>
-                                        <option value="2">courses 1</option>
-                                        <option value="3">courses 1</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <button class="btn btn-primary btn-block" type="submit" style="height: 60px;">Sign Up Now</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Courses End -->
-
-
     <!-- Testimonial Start -->
     <div class="container-fluid bg-image py-5" style="margin: 0px 0;">
         <div class="container py-5">
             <div class="row align-items-center">
                 <div class="col-lg-5 mb-5 mb-lg-0">
                     <div class="myfont rtl section-title position-relative mb-4">
-                        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Testimonial</h6>
-                        <h1 class="myfont rtl display-4">What Say Our Students</h1>
+                        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2 myfont">تجربیات دیگران</h6>
+                        <h1 class="myfont rtl display-4">درباره کدمونی چی میگن</h1>
                     </div>
                     <p class="myfont rtl m-0">Dolor est dolores et nonumy sit labore dolores est sed rebum amet, justo duo ipsum sanctus dolore magna rebum sit et. Diam lorem ea sea at. Nonumy et at at sed justo est nonumy tempor. Vero sea ea eirmod, elitr ea amet diam ipsum at amet. Erat sed stet eos ipsum diam</p>
                 </div>
                 <div class="col-lg-7">
-                    <div class="owl-carousel testimonial-carousel">
+                    <div class="rtl owl-carousel testimonial-carousel">
                         <div class="bg-white p-5">
                             <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
                             <p>Sed et elitr ipsum labore dolor diam, ipsum duo vero sed sit est est ipsum eos clita est ipsum. Est nonumy tempor at kasd. Sed at dolor duo ut dolor, et justo erat dolor magna sed stet amet elitr duo lorem</p>
@@ -211,14 +236,14 @@
                         
                     </div>
                     <br>
-                    <div class="bg-light d-flex flex-column justify-content-center px-5" style="height: 450px;">
+                    <div class="rtl bg-light d-flex flex-column justify-content-center px-5" style="height: 450px;">
                         <div class="d-flex align-items-center mb-5">
                             <div class="btn-icon bg-primary mr-4">
                                 <i class="fa fa-2x fa-map-marker-alt text-white"></i>
                             </div>
                             <div class="mt-n1">
-                                <h4>Our Location</h4>
-                                <p class="m-0">123 Street, New York, USA</p>
+                                <h4 class="myfont">مکان ما</h4>
+                                <p class="myfont m-0">ایران مازندران</p>
                             </div>
                         </div>
                         <div class="d-flex align-items-center mb-5">
@@ -226,8 +251,8 @@
                                 <i class="fa fa-2x fa-phone-alt text-white"></i>
                             </div>
                             <div class="mt-n1">
-                                <h4>Call Us</h4>
-                                <p class="m-0">+012 345 6789</p>
+                                <h4 class="myfont">شماره تلفن</h4>
+                                <p class="myfont m-0">+0912 345 6789</p>
                             </div>
                         </div>
                         <div class="d-flex align-items-center">
@@ -235,8 +260,8 @@
                                 <i class="fa fa-2x fa-envelope text-white"></i>
                             </div>
                             <div class="mt-n1">
-                                <h4>Email Us</h4>
-                                <p class="m-0">info@example.com</p>
+                                <h4 class="myfont">ایمیل</h4>
+                                <p class="myfont m-0">info@codemoni.ir</p>
                             </div>
                         </div>
                     </div>

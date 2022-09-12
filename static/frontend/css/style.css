@@ -2367,6 +2367,7 @@ textarea.form-control {
 
 .btn:not(:disabled):not(.disabled) {
   cursor: pointer;
+  border-radius: 11px !important;
 }
 
 a.btn.disabled,
@@ -6681,6 +6682,7 @@ button.bg-dark:focus {
   }
   .d-lg-block {
     display: block !important;
+    border-radius: 20px !important;
   }
   .d-lg-table {
     display: table !important;
@@ -7642,7 +7644,7 @@ button.bg-dark:focus {
 
 .mr-2,
 .mx-2 {
-  margin-left: 0.5rem !important;
+  margin-right: 0.5rem !important;
 }
 
 .mb-2,
