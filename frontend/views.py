@@ -15,6 +15,16 @@ def index(request):
     products = Product.objects.filter(status='published')
     return render(request, 'frontend/index.html', {'products':products})
 
+def cart(request):
+    cart = Cart.objects.get(user=request.user)
+    ids = [pro.pid for pro in cart.pids.all()]
+    
+    print(str(ids))
+    
+    #products = Product.objects.filter(pid=id)
+    products = [Product.objects.get(pid=id) for id in ids]
+    return render(request, 'frontend/cart.html', {'products':products})
+    
 def about(request):
     products = Product.objects.all()
     return render(request, 'frontend/about.html', {'products':products})

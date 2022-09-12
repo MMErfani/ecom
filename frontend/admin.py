@@ -39,3 +39,9 @@ class ProductAdmin(admin.ModelAdmin):
         return ", ".join([category.title for category in obj.category.all()])
     category_to_str.short_description = "دسته بندی"
  
+
+@admin.register(Cart)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('position', 'user')
+    list_filter = ('position',)
+    search_fields = ('user', 'pids')

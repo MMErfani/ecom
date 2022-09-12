@@ -38,7 +38,7 @@ class Product(models.Model):
     description = models.CharField(max_length=1024, default="", verbose_name="توضیحات")
     image = models.ImageField(upload_to="uploads/images/", max_length=52428,default="img.png", verbose_name="تصویر")
     slug = models.SlugField(max_length=250, unique_for_date= "publish", verbose_name="آدرس")
-    seller = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name='user_products', verbose_name="فروشنده")
+    seller = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, verbose_name="فروشنده")
     category = models.ManyToManyField(Category, verbose_name="دسته بندی")
     body = models.TextField(verbose_name="متن")
     publish = models.DateTimeField(default=timezone.now, verbose_name="زمان انتشار")
@@ -54,3 +54,12 @@ class Product(models.Model):
     
     def __str__(self):
         return self.productname
+        
+
+class Cart(models.Model):
+    user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, verbose_name="کاربر")
+    pids = models.ManyToManyField(Product, verbose_name="محصولات")
+    position = models.IntegerField(default=1, verbose_name="پوزیشن")
+    class Meta():
+        verbose_name = "سبد خرید"
+        verbose_name_plural = "سبدهای خرید"
