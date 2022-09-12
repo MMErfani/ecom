@@ -29,86 +29,42 @@
                         	<h6 class="rtl myfont d-inline-block position-relative text-secondary text-uppercase pb-2">توضیحات:</h6>
                         	<p class="myfont rtl">{{ productdetail.description }}</p>
                         </div>
+                        <div class="rtl section-title position-relative mb-5">
+                        	<h6 class="rtl myfont d-inline-block position-relative text-secondary text-uppercase pb-2">توضیحات بیشتر:</h6>
+                        	<p class="myfont rtl">{{ productdetail.body }}</p>
+                        </div>
 
                     </div>
 
-                    <h2 class="mb-3">Related Courses</h2>
+                    <h2 class="myfont mb-3">محصولات مرتبط<small> بزودی </small></h2>
                     <div class="owl-carousel related-carousel position-relative" style="padding: 0 30px;">
-                        <a class="courses-list-item position-relative d-block overflow-hidden mb-2" href="detail.html">
-                            <img class="img-fluid" src="img/courses-1.jpg" alt="">
-                            <div class="courses-text">
-                                <h4 class="text-center text-white px-3">Web design & development courses for
-                                    beginners</h4>
-                                <div class="border-top w-100 mt-3">
-                                    <div class="d-flex justify-content-between p-4">
-                                        <span class="text-white"><i class="fa fa-user mr-2"></i>Jhon Doe</span>
-                                        <span class="text-white"><i class="fa fa-star mr-2"></i>4.5
-                                            <small>(250)</small></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="courses-list-item position-relative d-block overflow-hidden mb-2" href="detail.html">
-                            <img class="img-fluid" src="img/courses-2.jpg" alt="">
-                            <div class="courses-text">
-                                <h4 class="text-center text-white px-3">Web design & development courses for
-                                    beginners</h4>
-                                <div class="border-top w-100 mt-3">
-                                    <div class="d-flex justify-content-between p-4">
-                                        <span class="text-white"><i class="fa fa-user mr-2"></i>Jhon Doe</span>
-                                        <span class="text-white"><i class="fa fa-star mr-2"></i>4.5
-                                            <small>(250)</small></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="courses-list-item position-relative d-block overflow-hidden mb-2" href="detail.html">
-                            <img class="img-fluid" src="img/courses-3.jpg" alt="">
-                            <div class="courses-text">
-                                <h4 class="text-center text-white px-3">Web design & development courses for
-                                    beginners</h4>
-                                <div class="border-top w-100 mt-3">
-                                    <div class="d-flex justify-content-between p-4">
-                                        <span class="text-white"><i class="fa fa-user mr-2"></i>Jhon Doe</span>
-                                        <span class="text-white"><i class="fa fa-star mr-2"></i>4.5
-                                            <small>(250)</small></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
+                        
+                        
                     </div>
                </div>
 
                 <div class="col-lg-4 mt-5 mt-lg-0">
                     <div class="bg-primary mb-5 py-3">
-                        <h3 class="text-white py-3 px-4 m-0">Course Features</h3>
+                        <h3 class="myfont text-white py-3 px-4 m-0">مشخصات محصول</h3>
                         <div class="d-flex justify-content-between border-bottom px-4">
-                            <h6 class="text-white my-3">Instructor</h6>
-                            <h6 class="text-white my-3">John Doe</h6>
+                            <h6 class="myfont text-white my-3">فروشنده</h6>
+                            <h6 class="myfont text-white my-3">{{ productdetail.seller.get_full_name }}</h6>
                         </div>
                         <div class="d-flex justify-content-between border-bottom px-4">
-                            <h6 class="text-white my-3">Rating</h6>
-                            <h6 class="text-white my-3">4.5 <small>(250)</small></h6>
+                            <h6 class="myfont text-white my-3">زمان انتشار</h6>
+                            <h6 class="myfont text-white my-3">{{ productdetail.created }}</h6>
                         </div>
                         <div class="d-flex justify-content-between border-bottom px-4">
-                            <h6 class="text-white my-3">Lectures</h6>
-                            <h6 class="text-white my-3">15</h6>
-                        </div>
-                        <div class="d-flex justify-content-between border-bottom px-4">
-                            <h6 class="text-white my-3">Duration</h6>
-                            <h6 class="text-white my-3">10.00 Hrs</h6>
-                        </div>
-                        <div class="d-flex justify-content-between border-bottom px-4">
-                            <h6 class="text-white my-3">Skill level</h6>
-                            <h6 class="text-white my-3">All Level</h6>
+                            <h6 class="myfont text-white my-3">بروز شده</h6>
+                            <h6 class="myfont text-white my-3">{{ productdetail.updated }}</h6>
                         </div>
                         <div class="d-flex justify-content-between px-4">
-                            <h6 class="text-white my-3">Language</h6>
-                            <h6 class="text-white my-3">English</h6>
+                            <h6 class="myfont text-white my-3">کد محصول</h6>
+                            <h6 class="myfont text-white my-3">{{ productdetail.pid }}</h6>
                         </div>
-                        <h5 class="text-white py-3 px-4 m-0">Course Price: $199</h5>
+                        <h5 class="myfont text-white py-3 px-4 m-0">قیمت محصول: {{ productdetail.price }}</h5>
                         <div class="py-3 px-4">
-                            <a class="btn btn-block btn-secondary py-3 px-5" href="">Enroll Now</a>
+                            <a class="myfont btn btn-block btn-secondary py-3 px-5" href="#">افزودن به سبد خرید</a>
                         </div>
                     </div>
 
