@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
 
 # Create your views here.
@@ -21,6 +21,24 @@ def cart(request):
     total=sum([pro.price for pro in cart.pids.all()])
     products = [Product.objects.get(pid=id) for id in ids]
     return render(request, 'frontend/cart.html', {'products':products, 'total':total})
+
+def addtocart(request, id):
+    cart = Cart.objects.get(user=request.user)
+    ids = [pro.pid for pro in cart.pids.all()]     
+    if id not in ids:
+        c = cart.pids.add(Product.objects.get(pid=id))
+        cart.save()
+
+    return redirect('/cart/')
+    
+def removefromcart(request, id):
+    cart = Cart.objects.get(user=request.user)
+    ids = [pro.pid for pro in cart.pids.all()]     
+    if id in ids:
+        c = cart.pids.remove(Product.objects.get(pid=id))
+        cart.save()
+
+    return redirect('/cart/')
     
 def about(request):
     products = Product.objects.all()
