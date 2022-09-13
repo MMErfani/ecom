@@ -5,6 +5,7 @@ from django.contrib.auth.admin import UserAdmin
 # Register your models here.
 
 UserAdmin.fieldsets[2][1]['fields'] = (
+                                        'purchased_products',
                                         "is_active",
                                         "is_staff",
                                         "phone",
