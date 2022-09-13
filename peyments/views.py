@@ -33,7 +33,6 @@ def go_to_gateway_view(request):
             # TODO: redirect to failed page.
             raise e
     else:
-        print("12*%&*^*&^&*^^^&^&^&$################")
         raise Http404
 
 #=========================================
@@ -43,14 +42,12 @@ def callback_gateway_view(request, userid, amount):
     tracking_code = request.GET.get(settings.TRACKING_CODE_QUERY_PARAM, None)
     if not tracking_code:
         logging.debug("این لینک معتبر نیست.")
-        print("23*%&*^*&^&*^^^&^&^&$################")
         raise Http404
 
     try:
         bank_record = bank_models.Bank.objects.get(tracking_code=tracking_code)
     except bank_models.Bank.DoesNotExist:
         logging.debug("این لینک معتبر نیست.")
-        print("34*%&*^*&^&*^^^&^&^&$################")
         raise Http404
 
     # در این قسمت باید از طریق داده هایی که در بانک رکورد وجود دارد، رکورد متناظر یا هر اقدام مقتضی دیگر را انجام دهیم
@@ -59,6 +56,12 @@ def callback_gateway_view(request, userid, amount):
         g = gateway_check(amount=int(amount),user=user,payment_status=True,tracking_code=tracking_code)
         g.save()
         cart = Cart.objects.get(user=user)
+        ids = [pro.pid for pro in cart.pids.filter(status="published")]
+        pp = user.purchased_products
+        products = [Product.objects.get(pid=id) for id in ids]
+        for i in products:
+            pp.add(i)
+        user.save()
         cart.delete()
         cart.save()
             # پرداخت با موفقیت انجام پذیرفته است و بانک تایید کرده است.
@@ -76,5 +79,4 @@ def callback_gateway_view(request, userid, amount):
         # پرداخت موفق نبوده است. اگر پول کم شده است ظرف مدت ۴۸ ساعت پول به حساب شما بازخواهد گشت.
         return render(request, 'peyments/failed.html')
     except:
-        print("1572*%&*^*&^&*^^^&^&^&$################")
         raise Http404

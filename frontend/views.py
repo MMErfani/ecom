@@ -77,6 +77,11 @@ def contact(request):
 
 def productPage(request, slug):
     product = get_object_or_404(Product, slug=slug)
+    
+    if product in request.user.purchased_products.all() and request.user.is_authenticated:
+        text="این محصول را قبلا خریداری کرده اید (نمایش)"
+        link="/purchased-products"
+        return render(request, 'frontend/product.html', context = {'productdetail' : product, 'link':link, 'text':text})
 
     if str(product.status)=='draft':
         text="فروش این محصول متوقف شده است"
@@ -100,7 +105,7 @@ def productPage(request, slug):
                 text= "برای خرید محصول ابتدا وارد حساب کاربری شوید"
                 link="/login"   
         
-
+    
     return render(request, 'frontend/product.html', context = {'productdetail' : product, 'link':link, 'text':text})
 def purchased_products(request):
     return render(request, 'frontend/purchased_products.html', context = {})
