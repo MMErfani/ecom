@@ -58,7 +58,7 @@ class Product(models.Model):
 
 class Cart(models.Model):
     user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, verbose_name="کاربر")
-    pids = models.ManyToManyField(Product, verbose_name="محصولات")
+    pids = models.ManyToManyField(Product,blank=True, verbose_name="محصولات")
     position = models.IntegerField(default=1, verbose_name="پوزیشن")
     class Meta():
         verbose_name = "سبد خرید"

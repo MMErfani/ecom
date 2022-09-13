@@ -4,40 +4,66 @@ from .models import *
 # Create your views here.
     
 def products(request):
-    products = Product.objects.all()
+    products = Product.objects.filter(status='published')
     return render(request, 'frontend/products.html', {'products':products})
 
-def product(request):
-    products = Product.objects.all()
-    return render(request, 'frontend/product.html', {'products':products})
 
 def index(request):
     products = Product.objects.filter(status='published')
     return render(request, 'frontend/index.html', {'products':products})
 
 def cart(request):
-    cart = Cart.objects.get(user=request.user)
-    ids = [pro.pid for pro in cart.pids.all()]
-    total=sum([pro.price for pro in cart.pids.all()])
-    products = [Product.objects.get(pid=id) for id in ids]
-    return render(request, 'frontend/cart.html', {'products':products, 'total':total})
+    if request.user.is_authenticated:
+        try:
+            cart = Cart.objects.get(user=request.user)
+            ids = [pro.pid for pro in cart.pids.all()]
+            total=sum([pro.price for pro in cart.pids.all()])
+            products = [Product.objects.get(pid=id) for id in ids]
+            if total!=0:
+                text= "پرداخت"
+                link="#"
+            else:
+                text= "بریم به آخرین محصولات سر بزنیم"
+                link="/products"
+        except:
+            cart = Cart(user=request.user)
+            cart.save()
+            total = 0
+            products = []
+            text= "بریم به آخرین محصولات سر بزنیم"
+            link="/products"
+    else:
+       total = 0
+       products = []
+       text= "ورود"
+       link="/login"
+
+    return render(request, 'frontend/cart.html', {'products':products, 'total':total, 'link':link, 'text':text})
 
 def addtocart(request, id):
-    cart = Cart.objects.get(user=request.user)
-    ids = [pro.pid for pro in cart.pids.all()]     
-    if id not in ids:
-        c = cart.pids.add(Product.objects.get(pid=id))
-        cart.save()
-
+    if request.user.is_authenticated:
+        try:
+            cart = Cart.objects.get(user=request.user)
+        except:
+            cart = Cart(user=request.user)
+            cart.save()
+        ids = [pro.pid for pro in cart.pids.all()]     
+        if id not in ids:
+            c = cart.pids.add(Product.objects.get(pid=id))
+            cart.save()
     return redirect('/cart/')
     
 def removefromcart(request, id):
-    cart = Cart.objects.get(user=request.user)
-    ids = [pro.pid for pro in cart.pids.all()]     
-    if id in ids:
-        c = cart.pids.remove(Product.objects.get(pid=id))
-        cart.save()
-
+    if request.user.is_authenticated:
+        try:
+            cart = Cart.objects.get(user=request.user)
+            ids = [pro.pid for pro in cart.pids.all()]
+            if id in ids:
+                c = cart.pids.remove(Product.objects.get(pid=id))
+                cart.save()
+        except:
+            cart = Cart(user=request.user)
+            cart.save()
     return redirect('/cart/')
     
 def about(request):
