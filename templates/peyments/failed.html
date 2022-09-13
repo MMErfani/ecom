@@ -1,15 +1,13 @@
+{% extends 'frontend/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{% block main %}
 	<meta charset="UTF-8">
 	<title>پرداخت با شکست مواجه شده است</title>
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="{% static 'peyment/css/style.css' %}">
-</head>
-<body>
+
 	<section class="main-content">
 		<div class="container">
 			<div class="row">
@@ -29,7 +27,7 @@
 						</div>
 						<h2 class="info-card_label">نشد که بشه</h2>
 						<div class="info-card_message">پرداخت با شکست مواجه شده است. اگر پول کم شده است ظرف مدت ۴۸ ساعت پول به حساب شما بازخواهد گشت.</div>
-						<a href='/'><button class="btn btn-primary">برو بریم</button></a>
+						<a href='/cart'><button class="btn btn-primary">برو بریم</button></a>
 					</div>
 				</div>
 							<div class="row">
@@ -50,8 +48,6 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</body>
-</html>
 
 	<style>
 		@import url('https://v1.fontapi.ir/css/Sahel');
@@ -61,10 +57,7 @@
 			text-align: right !important;
 			font-family: Sahel !important;
 		}
-		.myfont {
-		
-		font-family: Sahel !important;
-		}
+
 		.img-fluid {
   			max-width: 100%;
   			height: auto;
@@ -72,3 +65,4 @@
 
 
 	</style>
+{% endblock %}

@@ -55,10 +55,9 @@ def callback_gateway_view(request, userid, amount):
 
     # در این قسمت باید از طریق داده هایی که در بانک رکورد وجود دارد، رکورد متناظر یا هر اقدام مقتضی دیگر را انجام دهیم
     if bank_record.is_success:
-        
-        g = gateway_check(amount=int(amount),payment_status=True,tracking_code=tracking_code)
-        g.save()
         user = get_object_or_404(User, id=userid)
+        g = gateway_check(amount=int(amount),user=user,payment_status=True,tracking_code=tracking_code)
+        g.save()
         cart = Cart.objects.get(user=user)
         cart.delete()
         cart.save()
@@ -70,7 +69,8 @@ def callback_gateway_view(request, userid, amount):
 
     
     try:
-        g = gateway_check(amount=amount,payment_status=False,tracking_code=tracking_code)
+        user = get_object_or_404(User, id=userid)
+        g = gateway_check(amount=int(amount),user=user,payment_status=False,tracking_code=tracking_code)
         g.save()
     
         # پرداخت موفق نبوده است. اگر پول کم شده است ظرف مدت ۴۸ ساعت پول به حساب شما بازخواهد گشت.
