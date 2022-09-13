@@ -77,4 +77,27 @@ def contact(request):
 def productPage(request, slug):
     product = get_object_or_404(Product, slug=slug)
 
-    return render(request, 'frontend/product.html', context = {'productdetail' : product})
+    if str(product.status)=='draft':
+        text="فروش این محصول متوقف شده است"
+        link="#"
+    elif str(product.status)=='published':
+        try:
+            cart = Cart.objects.get(user=request.user)
+            ids = [pro.pid for pro in cart.pids.all()]
+                     
+            if product.pid in ids:
+                text="این محصول در سبد خرید موجود است. (نمایش)"
+                link="/cart"
+            else:
+                text="افزودن به سبد خرید"
+                link=f"/add-to-cart/{product.pid}"
+        except:
+            if request.user.is_authenticated:
+                text="افزودن به سبد خرید"
+                link=f"/add-to-cart/{product.pid}"
+            else:
+                text= "برای خرید محصول ابتدا وارد حساب کاربری شوید"
+                link="/login"   
+        
+
+    return render(request, 'frontend/product.html', context = {'productdetail' : product, 'link':link, 'text':text})
