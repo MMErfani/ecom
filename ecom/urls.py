@@ -17,8 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from azbankgateways.urls import az_bank_gateways_urls
+from peyments.views import go_to_gateway_view, callback_gateway_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('bankgateways/', az_bank_gateways_urls()),
+    path('go-to-gateway/', go_to_gateway_view),
+    path('callback-gateway/<int:userid>/<int:amount>/', callback_gateway_view),
     path('', include('frontend.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

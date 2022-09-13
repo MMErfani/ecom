@@ -19,10 +19,9 @@ def cart(request):
             ids = [pro.pid for pro in cart.pids.filter(status="published")]
             total=sum([pro.price for pro in cart.pids.filter(status="published")])
             products = [Product.objects.get(pid=id) for id in ids]
-            print(str(products))
             if products!=[]:
                 text= "پرداخت"
-                link="#"
+                link="/go-to-gateway/"
             else:
                 text= "بریم به آخرین محصولات سر بزنیم"
                 link="/products"

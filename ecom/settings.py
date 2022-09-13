@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'frontend',
     'django.contrib.humanize',
+    'azbankgateways',
+    'peyments',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +135,20 @@ AUTH_USER_MODEL = 'frontend.User'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+#================
+AZ_IRANIAN_BANK_GATEWAYS = {
+   'GATEWAYS': {
+       'IDPAY': {
+           'MERCHANT_CODE': '7964d82c-cbea-4e4c-88a0-00c43fbdbdf7',
+           'METHOD': 'POST',  # GET or POST
+           'X_SANDBOX': 1,  # 0 disable, 1 active
+       },
+   },
+   'IS_SAMPLE_FORM_ENABLE': False, # اختیاری و پیش فرض غیر فعال است
+   'DEFAULT': 'IDPAY',
+   'CURRENCY': 'IRR', # اختیاری
+   'TRACKING_CODE_QUERY_PARAM': 'tc', # اختیاری
+   'TRACKING_CODE_LENGTH': 16, # اختیاری
+   'SETTING_VALUE_READER_CLASS': 'azbankgateways.readers.DefaultReader', # اختیاری
+   'BANK_PRIORITIES': []
+}

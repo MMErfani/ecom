@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
+
+$primary: #03a9f4;
+$success: #4caf50;
+$danger: #f44336;
+$warning: #ff9800;
+
+body {
+	background: #f9f9f9;
+	font-family: "Roboto", sans-serif;
+}
+
+.main-content {
+	padding-top: 100px;
+	padding-bottom: 100px;
+}
+
+.info-card {
+	background: #fff;
+	text-align: center;
+	padding: 50px 30px;
+	margin-bottom: 30px;
+	border-radius: 3px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+
+	.info-card_icon {
+		height: 125px;
+		width: 125px;
+		margin: 0 auto 50px auto;
+		border: 5px solid $success;
+		border-radius: 125px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+
+		i {
+			font-size: 50px;
+			color: $success;
+		}
+		.info-card_img-icon{
+			height:60px;
+			width:60px;
+			object-fit: contain;
+		}
+	}
+
+	.info-card_label {
+		margin-bottom: 15px;
+	}
+
+	.info-card_message {
+		margin-bottom: 15px;
+	}
+
+	.btn {
+		background: $primary;
+		border-color: $primary;
+		box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+	}
+
+	&--success {
+		.info-card_icon {
+			border-color: $success;
+
+			i {
+				color: $success;
+			}
+		}
+	}
+
+	&--danger {
+		.info-card_icon {
+			border-color: $danger;
+
+			i {
+				color: $danger;
+			}
+		}
+	}
+
+	&--warning {
+		.info-card_icon {
+			border-color: $warning;
+
+			i {
+				color: $warning;
+			}
+		}
+	}
+}

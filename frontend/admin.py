@@ -7,6 +7,7 @@ from django.contrib.auth.admin import UserAdmin
 UserAdmin.fieldsets[2][1]['fields'] = (
                                         "is_active",
                                         "is_staff",
+                                        "phone",
                                         "avatar",
                                         "is_superuser",
                                         'groups',
