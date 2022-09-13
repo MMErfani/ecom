@@ -44,8 +44,7 @@
                     <a href="/purchased-products" class="myfont nav-item nav-link">محصولات خریداری شده</a>
                     {% endif %}
                     <a href="/products" class="myfont nav-item nav-link">محصولات</a>
-                    <a href="/about" class="myfont nav-item nav-link">درباره ما</a>
-                    <a href="/contact" class="myfont nav-item nav-link">تماس با ما</a>
+                    <a href="/about" class="myfont nav-item nav-link">درباره ما</a>    
                 </div>
                 {% if user.is_authenticated %}
                 <a href="/cart" style='text-decoration: none;' class="bmyfont tn btn-primary py-2 px-4 d-none d-lg-block">{{ user.get_full_name }}</a>
@@ -116,7 +115,7 @@
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary rounded-0 btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
-
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<style>
 		@import url('https://v1.fontapi.ir/css/Sahel');
 		body{
