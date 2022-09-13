@@ -102,3 +102,5 @@ def productPage(request, slug):
         
 
     return render(request, 'frontend/product.html', context = {'productdetail' : product, 'link':link, 'text':text})
+def purchased_products(request):
+    return render(request, 'frontend/purchased_products.html', context = {})

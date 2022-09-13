@@ -1,0 +1,84 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %}محصولات خریداری شده{% endblock %}
+{% block main %}
+
+{% if user.is_authenticated %}
+
+                <div class="rtl">
+                    <div class="bg-primary py-3">
+                        <h3 class="myfont text-white py-3 px-4 m-0">محصولات خریداری شده</h3>
+                        <div class="d-flex justify-content-between border-bottom px-4">
+                        </div>
+                        <div class="py-3 px-4">
+                            <a style='background-color: #F14D5D; border-color: #F14D5D;' class="myfont btn btn-block btn-secondary py-3 px-5" href="/products">یه سر به محصولات جدید بزنیم</a>
+                        </div>
+                    </div>
+
+                </div>
+    
+		        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'frontend/css2/styles.css' %}" rel="stylesheet" />
+        <!-- Section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    {% for product in user.purchased_products.all %}
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <a style='text-decoration: none;' href="/product/{{ product.slug }}"><img class="card-img-top" src="/media/{{ product.image }}" style=' border-radius: 25px !important;' alt="{{ product.productname }}" /></a>
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="myfont text-center">
+                                    <!-- Product name-->
+                                    <h5 class="myfont fw-bolder"><a style='text-decoration: none;' href="/product/{{ product.slug }}">{{ product.productname }}</a></h5>
+                                    <!-- Product reviews-->
+                                    <div class="myfont d-flex justify-content-center small mb-2">
+                                        <i class="fa fa-user mr-2"></i><small>{{ product.seller.get_full_name }}</small>
+                                    </div>
+                                    <!-- Product price-->
+                                    {{ product.price |intcomma:False}}
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="myfont btn btn-outline-dark mt-auto" href="/product/{{ product.slug }}" style='border-radius: 14px !important;'>نمایش محصول</a></div>
+                                <div class="text-center"><a class="myfont btn btn-outline-dark mt-auto" href="/product/{{ product.slug }}" style='border-radius: 14px !important;'>دانلود فایل های محصول</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'frontend/lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'frontend/lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'frontend/lib/counterup/counterup.min.js' %}"></script>
+    <script src="{% static 'frontend/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+{% else %}
+
+                <div class="rtl">
+                    <div class="bg-primary py-3">
+                        <h3 class="myfont text-white py-3 px-4 m-0">محصولات خریداری شده</h3>
+                        <div class="d-flex justify-content-between border-bottom px-4">
+                            <h2 class="myfont text-white my-3">شما وارد حساب نشده اید!</h2>
+                        </div>
+                        <div class="py-3 px-4">
+                            <a style='background-color: #F14D5D; border-color: #F14D5D;' class="myfont btn btn-block btn-secondary py-3 px-5" href="/login">ورود</a>
+                        </div>
+                    </div>
+
+                </div>
+{% endif %}
+{% endblock %}
