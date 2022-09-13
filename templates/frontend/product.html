@@ -1,5 +1,6 @@
 {% extends 'frontend/base.html' %}
 {% load static %}
+{% load humanize %}
 {% block title %}{{ productdetail.productname }}{% endblock %}
 {% block main %}
 <!DOCTYPE html>
@@ -61,7 +62,7 @@
                             <h6 class="myfont text-white my-3">کد محصول</h6>
                             <h6 class="myfont text-white my-3">{{ productdetail.pid }}</h6>
                         </div>
-                        <h5 class="myfont text-white py-3 px-4 m-0">قیمت محصول: {{ productdetail.price }}</h5>
+                        <h5 class="myfont text-white py-3 px-4 m-0">قیمت محصول: {{ productdetail.price |intcomma:False}}</h5>
                         <div class="py-3 px-4">
                             <a class="myfont btn btn-block btn-secondary py-3 px-5" href="{{link}}">{{text}}</a>
                         </div>

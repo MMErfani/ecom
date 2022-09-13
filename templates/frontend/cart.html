@@ -1,5 +1,6 @@
 {% extends 'frontend/base.html' %}
 {% load static %}
+{% load humanize %}
 {% block title %}سبد خرید{% endblock %}
 {% block main %}
 
@@ -10,7 +11,7 @@
                         <h3 class="myfont text-white py-3 px-4 m-0">سبد خرید</h3>
                         <div class="d-flex justify-content-between border-bottom px-4">
                             <h5 class="myfont text-white my-3">مجموع قیمت<small> (تومان)</small></h5>
-                            <h5 class="myfont text-white my-3">{{ total }}</h5>
+                            <h5 class="myfont text-white my-3">{{ total |intcomma:False}}</h5>
                         </div>
                         <div class="py-3 px-4">
                             <a style='background-color: #F14D5D; border-color: #F14D5D;' class="myfont btn btn-block btn-secondary py-3 px-5" href="{{ link }}">{{ text }}</a>
@@ -42,7 +43,7 @@
                                         <i class="fa fa-user mr-2"></i><small>{{ product.seller.get_full_name }}</small>
                                     </div>
                                     <!-- Product price-->
-                                    {{ product.price }}
+                                    {{ product.price |intcomma:False}}
                                 </div>
                             </div>
                             <!-- Product actions-->

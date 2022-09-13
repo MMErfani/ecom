@@ -16,10 +16,11 @@ def cart(request):
     if request.user.is_authenticated:
         try:
             cart = Cart.objects.get(user=request.user)
-            ids = [pro.pid for pro in cart.pids.all()]
-            total=sum([pro.price for pro in cart.pids.all()])
+            ids = [pro.pid for pro in cart.pids.filter(status="published")]
+            total=sum([pro.price for pro in cart.pids.filter(status="published")])
             products = [Product.objects.get(pid=id) for id in ids]
-            if total!=0:
+            print(str(products))
+            if products!=[]:
                 text= "پرداخت"
                 link="#"
             else:
@@ -37,6 +38,7 @@ def cart(request):
        products = []
        text= "ورود"
        link="/login"
+    
 
     return render(request, 'frontend/cart.html', {'products':products, 'total':total, 'link':link, 'text':text})
 
@@ -84,7 +86,7 @@ def productPage(request, slug):
         try:
             cart = Cart.objects.get(user=request.user)
             ids = [pro.pid for pro in cart.pids.all()]
-                     
+ 
             if product.pid in ids:
                 text="این محصول در سبد خرید موجود است. (نمایش)"
                 link="/cart"

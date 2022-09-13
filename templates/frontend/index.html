@@ -1,6 +1,6 @@
 {% extends 'frontend/base.html' %}
 {% load static %}
-
+{% load humanize %}
 {% block main %}
 
 <!DOCTYPE html>
@@ -89,7 +89,7 @@
                                         <i class="fa fa-user mr-2"></i><small>{{ product.seller.get_full_name }}</small>
                                     </div>
                                     <!-- Product price-->
-                                    {{ product.price }}
+                                    {{ product.price |intcomma:False}}
                                 </div>
                             </div>
                             <!-- Product actions-->
@@ -106,7 +106,10 @@
         <div class="row justify-content-center bg-image mx-0 mb-5">
             <div class="col-lg-6 py-5">
                 <div class="bg-white p-5 my-5">
-                    <h1 class="text-center mb-4">30% Off For New Students</h1>
+                {% if user.is_authenticated %}
+                <h3 class="myfont text-center mb-4">اطلاعات حسابت رو کامل کن! <a href='/account'>(بزن بریم)</a></h3>
+                {% else %}
+                    <h1 class="myfont text-center mb-4">ثبت محصول رایگان!</h1>
                     <form>
                         <div class="form-row">
                             <div class="col-sm-6">
@@ -136,7 +139,7 @@
                             </div>
                         </div>
                     </form>
-                    
+                    {% endif %}
                     <br>
                     <div class="rtl bg-light d-flex flex-column justify-content-center px-5" style="height: 450px;">
                         <div class="d-flex align-items-center mb-5">
