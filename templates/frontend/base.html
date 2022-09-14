@@ -32,7 +32,8 @@
     <div class="myfont rtl container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
             <a href="/" class="navbar-brand ml-lg-3">
-                <h1 class="m-0 text-uppercase text-primary myfont"><i class="fa fa-book-reader mr-3"></i>کدمونی</h1>
+                <h1 class="m-0 text-uppercase text-primary myfont"><img style="width: 50px;
+border-radius: 0px;"src='{% static "account/assets/img/codemoni.png" %}'class="rtl"></img></h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -48,7 +49,7 @@
                     <a href="/about" class="myfont nav-item nav-link">درباره ما</a>    
                 </div>
                 {% if user.is_authenticated %}
-                <a href="/cart" style='text-decoration: none;' class="bmyfont tn btn-primary py-2 px-4 d-none d-lg-block">{{ user.firstname }}خوش اومدی </a>
+                <a href="/account" style='text-decoration: none;' class="bmyfont tn btn-primary py-2 px-4 d-none d-lg-block">{{ user.firstname }}خوش اومدی </a>
                 {% else %}
                 <a href="/account" style='text-decoration: none;' class="bmyfont tn btn-primary py-2 px-4 d-none d-lg-block">بپیوندید</a>
                 {% endif %}
