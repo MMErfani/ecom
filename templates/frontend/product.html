@@ -36,9 +36,33 @@
 
                     </div>
 
-                    <h2 class="myfont mb-3">محصولات مرتبط<small> بزودی </small></h2>
+                    <h2 class="myfont mb-3">محصولات اخیر</h2>
                     <div class="owl-carousel related-carousel position-relative" style="padding: 0 30px;">
-                        
+                     
+        <!-- Section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    {% for product in other %}
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <a style='text-decoration: none;' href="/product/{{ product.slug }}"><img class="card-img-top" src="/media/{{ product.image }}" style=' border-radius: 25px !important;' alt="{{ product.productname }}" /></a>
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="myfont text-center">
+                                    <!-- Product name-->
+                                    <h5 class="myfont fw-bolder"><a style='text-decoration: none;' href="/product/{{ product.slug }}">{{ product.productname }}</a></h5>
+                                    <!-- Product price-->
+                                   {{ product.price |intcomma:False}} تومن
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>   
                         
                     </div>
                </div>
@@ -49,6 +73,10 @@
                         <div class="d-flex justify-content-between border-bottom px-4">
                             <h6 class="myfont text-white my-3">فروشنده</h6>
                             <h6 class="myfont text-white my-3">{{ productdetail.seller.get_full_name }}</h6>
+                        </div>
+                        <div class="d-flex justify-content-between border-bottom px-4">
+                            <h6 class="myfont text-white my-3">دسته بندی</h6>
+                            <h6 class="myfont text-white my-3">{% for i in productdetail.category.all %}{{i}} {% endfor %}</h6>
                         </div>
                         <div class="d-flex justify-content-between border-bottom px-4">
                             <h6 class="myfont text-white my-3">زمان انتشار</h6>

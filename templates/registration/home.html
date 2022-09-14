@@ -1,0 +1,130 @@
+{% extends 'registration/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% block title-meta %}
+	اطلاعات کاربری
+{% endblock %}{% endblock %}
+
+{% block main %}
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{user.wallet}}</h3>
+
+                <p>موجودی کیف پول (﷼)</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>بزودی</h3>
+
+                <p>دیگران از شما حمایت کردند</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+          
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>بزودی</h3>
+
+                <p>شما حمایت کردید</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>بزودی</h3>
+
+                <p>بازدید پروفایل شما</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              
+            </div>
+          </div>
+
+              
+          <!-- ./col -->
+        </div>
+        <!-- /.row -->
+        <!-- Main row -->
+<div class="col-md-12">
+  <div class="card card-primary">
+    <div class="card-header">
+      <h3 class="card-title mb-0 float-left">ویرایش اطلاعات کاربری</h3>
+    </div>
+		<div class="card-body">
+			<form method="post" enctype="multipart/form-data">{% csrf_token %}
+		    <div class="row">
+		      <div class="col-6">
+		        {{ form.username|as_crispy_field }}
+		      </div>
+		      <div class="container">
+		      </div>
+		      <div class="col-6">
+		        {{ form.email|as_crispy_field }}
+		      </div>
+		      <div class="container">
+		      	<div class="alert alert-warning">
+			      	<label>گذرواژه</label>
+			      	<p class="mb-0">برای تغییر گذرواژه <a class="alert-link" href="/password_change">کلیک</a> کنید.</p>
+		        </div>
+		      </div>
+		      <div class="col-6">
+		        {{ form.first_name|as_crispy_field }}
+		      </div>
+		      <div class="container">
+		      </div>
+		      <div class="col-6">
+		        {{ form.last_name|as_crispy_field }}
+		      </div>
+		      <div class="container">
+		      </div>
+		      <div class="col-6">
+		        {{ form.phone|as_crispy_field }}
+		      </div>
+		      <div class="container">
+		      </div>
+		      <div class="col-6">
+		        {{ form.avatar|as_crispy_field }}
+		      </div>
+		      <div class="container">
+		      </div>
+		      <div class="container">
+		      </div>
+		    </div>
+				<button class="btn btn-success">ویرایش اطلاعات</button>
+			</form>
+		</div>
+</div>
+{% endblock %}
+

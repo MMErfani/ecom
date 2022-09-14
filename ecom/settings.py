@@ -13,7 +13,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import os
 
-
+LOGIN_REDIRECT_URL = "accounts:Profile"
+LOGIN_URL = "login"
+LOGOUT_REDIRECT_URL = "login"
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -43,6 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'azbankgateways',
     'peyments',
+    'accounts',
+    'widget_tweaks',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [

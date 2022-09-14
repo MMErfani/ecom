@@ -78,7 +78,8 @@ def productPage(request, slug):
     if product in request.user.purchased_products.all() and request.user.is_authenticated:
         text="این محصول را قبلا خریداری کرده اید (نمایش)"
         link="/purchased-products"
-        return render(request, 'frontend/product.html', context = {'productdetail' : product, 'link':link, 'text':text})
+        last_p = Product.objects.filter(status='published').order_by('-pid')[:4]
+        return render(request, 'frontend/product.html', context = {'productdetail' : product, 'link':link, 'text':text, 'other':last_p})
 
     if str(product.status)=='draft':
         text="فروش این محصول متوقف شده است"
@@ -102,7 +103,8 @@ def productPage(request, slug):
                 text= "برای خرید محصول ابتدا وارد حساب کاربری شوید"
                 link="/login"   
         
-    
-    return render(request, 'frontend/product.html', context = {'productdetail' : product, 'link':link, 'text':text})
+    last_p = Product.objects.filter(status='published').order_by('-pid')[:4]
+    return render(request, 'frontend/product.html', context = {'productdetail' : product, 'link':link, 'text':text, 'other':last_p})
+  
 def purchased_products(request):
     return render(request, 'frontend/purchased_products.html', context = {})
