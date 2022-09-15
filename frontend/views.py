@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
-
 # Create your views here.
     
 def products(request):
@@ -108,3 +107,13 @@ def productPage(request, slug):
   
 def purchased_products(request):
     return render(request, 'frontend/purchased_products.html', context = {})
+
+
+def my_products(request):
+    try:
+       products = Product.objects.filter(seller=request.user)
+
+    except:
+        pass
+
+    return render(request, 'frontend/my_products.html', {'products':products})
